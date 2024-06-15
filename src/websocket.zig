@@ -45,7 +45,7 @@ const WebsocketHandler = struct {
 
     pub fn handle(self: *WebsocketHandler, message: Message) !void {
         const data = message.data;
-        util.print("[Websocket] Message: {any}", .{message});
+        util.print("[Websocket] Message: {s}", .{data});
         try self.conn.write(data); // echo the message back
     }
 
