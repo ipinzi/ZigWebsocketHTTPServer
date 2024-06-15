@@ -1,0 +1,5 @@
+id: nbq19hf3uad50ojj4zfzi5muvklewkbdk8bjpx9ldkntuiz6
+name: ZigWebsocketHTTPServer
+license: y
+description: A Simple HTTP & Websocket Server
+root_dependencies:
