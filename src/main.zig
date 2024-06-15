@@ -12,6 +12,16 @@ pub fn main() !void {
     const threadConfig = std.Thread.SpawnConfig{
         .stack_size = 1024 * 16,
     };
+
+    util.print("", .{});
+    util.printColor("==============================", .{}, "magenta");
+    util.printColor("===== Ben's Pretty Logs! =====", .{}, "magenta");
+    util.printColor("==============================", .{}, "magenta");
+    util.logWarning("This is an Warning TEST", .{});
+    util.logError("This is an ERROR TEST", .{});
+    util.printColor("This is an Color TEST", .{}, "green");
+    util.print("", .{});
+
     const thread1 = try std.Thread.spawn(threadConfig, httpServer.httpServer, .{});
     const thread2 = try std.Thread.spawn(threadConfig, websocket.websocketServer, .{});
 
