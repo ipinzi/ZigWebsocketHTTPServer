@@ -2,7 +2,7 @@ const std = @import("std");
 const util = @import("util.zig");
 const httpz = @import("httpz");
 
-const homeHtml = @embedFile("home.html");
+const homeHtml: []const u8 = @embedFile("home.html");
 
 pub fn httpServer() !void {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};

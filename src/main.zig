@@ -17,10 +17,17 @@ pub fn main() !void {
     util.printColor("==============================", .{}, "magenta");
     util.printColor("===== Ben's Pretty Logs! =====", .{}, "magenta");
     util.printColor("==============================", .{}, "magenta");
-    util.logWarning("This is an Warning TEST", .{});
-    util.logError("This is an ERROR TEST", .{});
-    util.printColor("This is an Color TEST", .{}, "green");
+
+    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+    const allocator = gpa.allocator();
+    util.printColor("Current Working Directory is: {s}", .{
+        try std.fs.cwd().realpathAlloc(allocator, "."),
+    }, "cyan");
     util.print("", .{});
+
+    const file = try util.readFile("src/home.html", allocator);
+    defer allocator.free(file);
+    util.printColor("{s}", .{file}, "cyan");
 
     const thread1 = try std.Thread.spawn(threadConfig, httpServer.httpServer, .{});
     const thread2 = try std.Thread.spawn(threadConfig, websocket.websocketServer, .{});
