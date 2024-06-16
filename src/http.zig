@@ -24,7 +24,7 @@ pub fn httpServer() !void {
     router.get("/about", handleAbout);
     //router.get("/ws", handleWebsocket);
 
-    util.print("Arrogant Zig Server Listening On Port: {any}", .{server.config.port});
+    util.print("Arrogant Pixel (ipinzi) Zig Server Listening On Port: {any}", .{server.config.port});
 
     server.listen() catch |err| util.print("ERROR: {any}", .{err});
 }
